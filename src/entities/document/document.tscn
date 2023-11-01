@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxk3vb31xfj3u"]
+
+[ext_resource type="Script" path="res://entities/document/document.gd" id="1_x2njt"]
+[ext_resource type="PackedScene" uid="uid://dmccrpo3o47cr" path="res://entities/zoomable/zoomable.tscn" id="2_jccys"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vdjmi"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p7lpd"]
+
+[sub_resource type="TextMesh" id="TextMesh_m8ty1"]
+text = "Just a test"
+
+[node name="document" type="Node3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+script = ExtResource("1_x2njt")
+text_sprite = "Just random"
+
+[node name="zoomable" parent="." instance=ExtResource("2_jccys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.459083, 0)
+
+[node name="Origin" parent="zoomable" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_vdjmi")
+mesh = SubResource("PlaneMesh_p7lpd")
+
+[node name="name" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.18872, 0, -0.598987)
+mesh = SubResource("TextMesh_m8ty1")
+
+[editable path="zoomable"]

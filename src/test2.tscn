@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs48at21r7l03"]
+
+[ext_resource type="PackedScene" uid="uid://c2oog18s1ou5t" path="res://test.blend" id="1_0pfci"]
+
+[node name="test" instance=ExtResource("1_0pfci")]
+
+[node name="L_Light_1" parent="." index="37"]
+visible = false

@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://bcoeja32u2s43"]
+
+[ext_resource type="Script" path="res://CameraController.gd" id="1_tvuuk"]
+[ext_resource type="PackedScene" uid="uid://bs48at21r7l03" path="res://test2.tscn" id="3_0x075"]
+[ext_resource type="PackedScene" uid="uid://cxk3vb31xfj3u" path="res://entities/document/document.tscn" id="3_tsb8q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eslcj"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ewwv8"]
+sky_material = SubResource("ProceduralSkyMaterial_eslcj")
+
+[sub_resource type="Environment" id="Environment_qxpuf"]
+background_mode = 2
+sky = SubResource("Sky_ewwv8")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qxpuf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.88712, 1.92405, 0.281319)
+keep_aspect = 0
+fov = 35.9
+near = 0.032
+script = ExtResource("1_tvuuk")
+
+[node name="test" parent="." instance=ExtResource("3_0x075")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0118568, 0, 0.00917244)
+
+[node name="document" parent="." instance=ExtResource("3_tsb8q")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.933419, 1.19959, 0)
+
+[node name="Origin" parent="document/zoomable" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.98384, 0)
+
+[node name="LookAt" parent="document/zoomable" index="2"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+
+[editable path="document"]
+[editable path="document/zoomable"]

@@ -11,5 +11,31 @@ config_version=5
 [application]
 
 config/name="SovietAir"
+run/main_scene="res://world.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="res://icon.png"
+config/icon="res://icon.png"
+
+[autoload]
+
+GodotLogger="*res://addons/logger/logger.gd"
+Constants="*res://autoloaders/constants.gd"
+GlobalEvents="*res://autoloaders/GlobalEvents.gd"
+GameTime="*res://autoloaders/GameTime.gd"
+Testing="*res://autoloaders/testing.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
+window/size/initial_position_type=2
+window/size/initial_screen=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/logger/plugin.cfg")
+
+[filesystem]
+
+import/fbx/enabled=false

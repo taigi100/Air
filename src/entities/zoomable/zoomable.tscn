@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmccrpo3o47cr"]
+
+[ext_resource type="Script" path="res://entities/zoomable/zoomable.gd" id="1_m36h2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0seu1"]
+
+[node name="zoomable" type="Area3D"]
+script = ExtResource("1_m36h2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0seu1")
+
+[node name="Origin" type="Node3D" parent="."]
+
+[node name="LookAt" type="Node3D" parent="."]
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
