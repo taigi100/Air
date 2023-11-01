@@ -64,6 +64,7 @@ jobs:
     - name: Build Project
       run: |
         mkdir -v -p ${GITHUB_WORKSPACE}/${EXPORT_FOLDER}
+        ls -l
         cd ${PROJECT_FOLDER}
 
         # Exporting the game
