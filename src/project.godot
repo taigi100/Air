@@ -18,11 +18,11 @@ config/icon="res://icon.png"
 
 [autoload]
 
-GodotLogger="*res://addons/logger/logger.gd"
 Constants="*res://autoloaders/constants.gd"
 GlobalEvents="*res://autoloaders/GlobalEvents.gd"
 GameTime="*res://autoloaders/GameTime.gd"
 Testing="*res://autoloaders/testing.gd"
+GodotLogger="*res://addons/logger/logger.gd"
 
 [display]
 
@@ -39,3 +39,7 @@ enabled=PackedStringArray("res://addons/logger/plugin.cfg")
 [filesystem]
 
 import/fbx/enabled=false
+
+[physics]
+
+3d/physics_engine="GodotPhysics3D"
