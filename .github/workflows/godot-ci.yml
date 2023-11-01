@@ -16,7 +16,7 @@ env:
   GODOT_MAJOR_MINOR_VERSION: "4.1.2" # must be a string, not a number
   GODOT_PATCH_VERSION: "stable"
 
-  PROJECT_FOLDER: "./src" # the path to the godot project (must contain `project.godot` file) relative to the github root path
+  PROJECT_FOLDER: "src" # the path to the godot project (must contain `project.godot` file) relative to the github root path
 
   EXPORT_TEMPLATE: release # export with release || debug
   EXPORT_PRESET_NAME: Web # name of the preset
@@ -66,6 +66,7 @@ jobs:
         mkdir -v -p ${GITHUB_WORKSPACE}/${EXPORT_FOLDER}
         ls -l
         cd ${PROJECT_FOLDER}
+        pwd
 
         # Exporting the game
         ${GITHUB_WORKSPACE}/godot.x86_64 --headless --path . --export-${EXPORT_TEMPLATE} ${EXPORT_PRESET_NAME} ${GITHUB_WORKSPACE}/${EXPORT_FOLDER}/${EXPORT_FILENAME}
