@@ -5,7 +5,9 @@
 # headers in Github Pages, without, the game will not load
 
 name: "godot4-web-deployer"
-on: push
+on:
+  push:
+  workflow_dispatch:
 
 permissions:
   contents: write
