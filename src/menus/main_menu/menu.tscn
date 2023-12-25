@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://1op8jnnksgob"]
+
+[ext_resource type="Script" path="res://menus/main_menu/menu.gd" id="1_wgewb"]
+[ext_resource type="Texture2D" uid="uid://cxjpavcb5lwrt" path="res://menus/main_menu/assets/main_menu.png" id="2_yocqm"]
+
+[sub_resource type="Curve" id="Curve_jwity"]
+
+[sub_resource type="CurveTexture" id="CurveTexture_xph6m"]
+curve = SubResource("Curve_jwity")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_71qnt"]
+texture = SubResource("CurveTexture_xph6m")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bol6e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ublq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhsvc"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wgewb")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1921.0
+offset_bottom = 1077.0
+texture = ExtResource("2_yocqm")
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -161.0
+offset_top = -98.0
+offset_right = 154.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_71qnt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bol6e")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7ublq")
+text = "Play"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 2
+offset_left = 1321.0
+offset_top = 953.0
+offset_right = 1507.0
+offset_bottom = 998.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_jhsvc")
+text = "Quit"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

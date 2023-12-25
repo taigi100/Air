@@ -1,0 +1,129 @@
+[gd_scene load_steps=13 format=3 uid="uid://bcoeja32u2s43"]
+
+[ext_resource type="Script" path="res://entities/CameraController.gd" id="1_504wi"]
+[ext_resource type="PackedScene" uid="uid://cxk3vb31xfj3u" path="res://entities/document/document.tscn" id="2_ku13p"]
+[ext_resource type="PackedScene" uid="uid://gfidyg2yjub8" path="res://scenes/assets/RailRushRegister.gltf" id="3_btfko"]
+[ext_resource type="Script" path="res://scenes/main/TimeUI.gd" id="4_bdrkl"]
+[ext_resource type="PackedScene" uid="uid://5cmk87g4uot7" path="res://entities/timeline/timeline.tscn" id="5_c2bi3"]
+[ext_resource type="Script" path="res://scenes/main/TicketStatus.gd" id="5_wt1tl"]
+[ext_resource type="Script" path="res://entities/timeline/timeline.gd" id="6_pv3pd"]
+[ext_resource type="PackedScene" uid="uid://blguuhk0powcu" path="res://entities/customer_manager/customer_manager.tscn" id="7_5tqc3"]
+[ext_resource type="PackedScene" uid="uid://bmmgr6rxb05wp" path="res://entities/decision_engine/decision_engine.tscn" id="9_uaydl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_eslcj"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ewwv8"]
+sky_material = SubResource("ProceduralSkyMaterial_eslcj")
+
+[sub_resource type="Environment" id="Environment_qxpuf"]
+background_mode = 2
+sky = SubResource("Sky_ewwv8")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_qxpuf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.88712, 1.92405, 0.281319)
+keep_aspect = 0
+fov = 35.9
+near = 0.032
+script = ExtResource("1_504wi")
+
+[node name="document" parent="." instance=ExtResource("2_ku13p")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.933419, 1.19959, 0)
+
+[node name="Origin" parent="document/zoomable" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.98384, 0)
+
+[node name="LookAt" parent="document/zoomable" index="2"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+
+[node name="RailRushRegister" parent="." instance=ExtResource("3_btfko")]
+
+[node name="Customers" type="Node" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 32.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="EndDay" type="Button" parent="Control"]
+layout_mode = 1
+offset_left = -54.0
+offset_top = -66.0
+offset_right = 17.0
+offset_bottom = -35.0
+text = "End Day"
+
+[node name="SpawnCustomer" type="Button" parent="Control"]
+layout_mode = 1
+offset_left = -123.0
+offset_top = -103.0
+offset_right = 17.0
+offset_bottom = -72.0
+text = "Spawn Customer"
+
+[node name="GibGood" type="Button" parent="Control"]
+layout_mode = 1
+offset_left = -121.0
+offset_top = -185.0
+offset_right = 19.0
+offset_bottom = -154.0
+text = "Gib Good Ticket"
+
+[node name="GibBad" type="Button" parent="Control"]
+layout_mode = 1
+offset_left = -124.0
+offset_top = -142.0
+offset_right = 16.0
+offset_bottom = -111.0
+text = "Gib Bad Ticket"
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -52.0
+offset_top = -31.0
+offset_right = 32.0
+offset_bottom = -8.0
+script = ExtResource("4_bdrkl")
+
+[node name="TicketStatus" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -101.0
+offset_top = -232.0
+offset_right = -17.0
+offset_bottom = -209.0
+script = ExtResource("5_wt1tl")
+
+[node name="Timeline" parent="." instance=ExtResource("5_c2bi3")]
+script = ExtResource("6_pv3pd")
+
+[node name="CustomerManager" parent="." instance=ExtResource("7_5tqc3")]
+
+[node name="DecisionEngine" parent="." instance=ExtResource("9_uaydl")]
+
+[connection signal="pressed" from="Control/EndDay" to="Camera3D" method="_on_end_day_pressed"]
+[connection signal="pressed" from="Control/SpawnCustomer" to="Camera3D" method="_on_spawn_customer_pressed"]
+[connection signal="pressed" from="Control/GibGood" to="Camera3D" method="_on_gib_good_pressed"]
+[connection signal="pressed" from="Control/GibBad" to="Camera3D" method="_on_gib_bad_pressed"]
+
+[editable path="document"]
+[editable path="document/zoomable"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://qj8q7dbwnwt4"]
+
+[ext_resource type="Script" path="res://entities/customer/customer.gd" id="1_psfry"]
+[ext_resource type="PackedScene" uid="uid://dvtnqargcv8br" path="res://entities/dialogue/dialogue.tscn" id="2_khrko"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qc035"]
+
+[node name="Customer" type="Node3D"]
+script = ExtResource("1_psfry")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_qc035")
+
+[node name="Dialogue" parent="." instance=ExtResource("2_khrko")]

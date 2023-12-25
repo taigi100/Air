@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://blguuhk0powcu"]
+
+[ext_resource type="Script" path="res://entities/customer_manager/customer_manager.gd" id="1_0lsl8"]
+
+[node name="CustomerManager" type="Node"]
+script = ExtResource("1_0lsl8")

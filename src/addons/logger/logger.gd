@@ -51,16 +51,20 @@ func with(prefix:String="",args:Dictionary={}) ->Log :
 func logger(message:String,values,log_level=LogLevel.INFO):
 	if CURRENT_LOG_LEVEL > log_level :
 		return
-	var log_msg_format = "{level} [{time}]{prefix} {message} "
+	var log_msg_format = "{level} [{time}][{location}]{prefix} {message} "
 
 	var now = Time.get_datetime_dict_from_system(true)
-	
+	var frames = get_stack()
+	var frame = "";
+	if len(frames) - 1 >= 0:
+		frame = frames[len(frames) - 1]
 	var msg = log_msg_format.format(
 		{
 			"prefix":_prefix,
 			"message":message,
 			"time":"{day}/{month}/{year} {hour}:{minute}:{second}".format(now),
-			"level":LogLevel.keys()[log_level]
+			"level":LogLevel.keys()[log_level],
+			"location": (frame.source.get_file() + ":" + str(frame.line)) if frame != "" else ""
 		})
 	
 	

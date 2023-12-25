@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://j343ebqm6nl"]
+
+[ext_resource type="Script" path="res://menus/inter_day/inter_day.gd" id="1_t184a"]
+
+[node name="InterDay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t184a")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -15.5
+offset_right = 39.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next Day"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

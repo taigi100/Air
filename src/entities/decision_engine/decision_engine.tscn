@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmmgr6rxb05wp"]
+
+[ext_resource type="Script" path="res://entities/decision_engine/decision_engine.gd" id="1_80d6g"]
+
+[node name="DecisionEngine" type="Node"]
+script = ExtResource("1_80d6g")

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://gfidyg2yjub8"
-path="res://.godot/imported/RailRushRegister.gltf-73db1f62ec9c326eefe78ba00051abd9.scn"
+path="res://.godot/imported/RailRushRegister.gltf-132203fe9d463ad893ab2f82e29de1f4.scn"
 
 [deps]
 
-source_file="res://RailRushRegister.gltf"
-dest_files=["res://.godot/imported/RailRushRegister.gltf-73db1f62ec9c326eefe78ba00051abd9.scn"]
+source_file="res://scenes/assets/RailRushRegister.gltf"
+dest_files=["res://.godot/imported/RailRushRegister.gltf-132203fe9d463ad893ab2f82e29de1f4.scn"]
 
 [params]
 

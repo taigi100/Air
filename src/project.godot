@@ -11,18 +11,15 @@ config_version=5
 [application]
 
 config/name="Air"
-run/main_scene="res://world.tscn"
+run/main_scene="res://scenes/game_controller/game_controller.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-boot_splash/image="res://icon.png"
-config/icon="res://icon.png"
+boot_splash/image="res://scenes/assets/icon.png"
+config/icon="res://scenes/assets/icon.png"
 
 [autoload]
 
-Constants="*res://autoloaders/constants.gd"
-GlobalEvents="*res://autoloaders/GlobalEvents.gd"
-GameTime="*res://autoloaders/GameTime.gd"
-Testing="*res://autoloaders/testing.gd"
 GodotLogger="*res://addons/logger/logger.gd"
+Constants="*res://globals/constants.gd"
 
 [display]
 

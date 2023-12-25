@@ -3,7 +3,6 @@ extends Node
 var start_hour = 8
 var end_hour = 23
 
-var day: int = 0
 var seconds: float = 0
 
 func get_hour() -> int:
@@ -24,14 +23,24 @@ func hour_to_seconds(hour: int) -> int:
 	return hour * Constants.minutes_in_hours * Constants.seconds_in_minute
 
 var last_broadcast_minute: int = -1
+
+func _ready() -> void:
+	Constants.day_start.connect(start_time)
+
+func start_time() -> void:
+	GodotLogger.info("Starting day timer")
+	seconds = 0
+	resume_time()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	seconds += delta * Constants.time_dilation * (1 - int(is_time_paused))
 	if (seconds + hour_to_seconds(start_hour) >= hour_to_seconds(end_hour)):
-		day += 1
+		GodotLogger.info("Stopping day timer")
 		seconds = 0
-		GlobalEvents.emit(Constants.queue_day_change)
+		pause_time()
+		Constants.day_end.emit()
 	
 	if (get_minutes() % Constants.time_broadcast_frequency == 0 && get_minutes() != last_broadcast_minute):
-		GlobalEvents.emit(Constants.queue_minute_change)
 		last_broadcast_minute = get_minutes()
+		Constants.gametime_minutechange.emit(get_hour(), get_minutes())
